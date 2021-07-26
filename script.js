@@ -9,13 +9,15 @@ async function serverQuery(url) {
 }
 let counter = 1;
 async function generateP() {
+    if (counter < 5) {
+        const data = await serverQuery(`service${counter}.html`);
 
+        const pEl = document.querySelector('#result');
+        pEl.innerHTML = data;
+        counter++;
 
-    const data = await serverQuery(`service${counter}.html`);
+    }
 
-    const pEl = document.querySelector('#result');
-    pEl.innerHTML = data;
-    counter++;
 
 }
 
